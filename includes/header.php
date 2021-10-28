@@ -1,5 +1,14 @@
 <?php
-  include "includes/functions.php"
+  include "includes/functions.php";
+
+  
+
+  
+  $users_count = db_query("SELECT COUNT('id') FROM `users`;")->fetchColumn(); 
+  
+  $links_count = db_query("SELECT COUNT('id') FROM `links`;")->fetchColumn(); 
+  
+  $views_count = db_query("SELECT SUM(`views`) FROM `links`;")->fetchColumn();  
 ?>
 <!doctype html>
 <html lang="ru">
@@ -35,4 +44,4 @@
       </div>
     </nav>
   </header>
-  <!-- <?php var_dump($_SERVER); ?> -->
+  
