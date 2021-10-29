@@ -1,11 +1,12 @@
 <?php
+	include_once "includes/functions.php";
 	if (isset($_GET['url']) && !empty($_GET['url'])) {
 		$url = trim(strtolower($_GET['url']));
 
 		$link = get_link_info($url);
 
 		if (empty($link)) {
-			header('Location: '.HOST.'/404.html');
+			header('Location: '.HOST.'/404.php');
 			die;
 		}
 
@@ -15,12 +16,14 @@
 		die;
 	}
 
-	include "includes/header.php";
+	include_once "includes/header.php";
 ?>
 <main class="container">
 	<div class="row mt-5">
 		<div class="col">
+			<?php if (isset($_SESSION['user']['id']) && !empty($_SESSION['user']['id'])) {?>
 			<h2 class="text-center">Необходимо <a href="<?php echo get_url('register.php');?>">зарегистрироваться</a> или <a href="<?php echo get_url("login.php");?>">войти</a> под своей учетной записью</h2>
+			<?php }?>
 		</div>
 	</div>
 	<div class="row mt-5">
